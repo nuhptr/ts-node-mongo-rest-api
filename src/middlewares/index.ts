@@ -1,7 +1,7 @@
 import express from 'express';
 import { get, merge } from 'lodash';
 
-import { getUserBySessionToken } from 'db/users';
+import { getUserBySessionToken } from '../db/users';
 
 export const isAuthenticated = async (
   req: express.Request,
@@ -33,5 +33,36 @@ export const isAuthenticated = async (
     return res
       .sendStatus(400)
       .json({ error: 'Invalid session token' });
+  }
+};
+
+export const isOwner = async (
+  req: express.Request,
+  res: express.Response,
+  next: express.NextFunction
+) => {
+  try {
+    const { id } = req.params;
+    const currentUserId = get(req, 'identity');
+    const userId = 'currentUserId._id' as string;
+
+    if (!currentUserId) {
+      return res.sendStatus(403).json({
+        error: 'You are not authorized to access this resource',
+      });
+    }
+
+    if (userId.toString() !== id) {
+      return res.sendStatus(403).json({
+        error: 'You are not authorized to access this resource',
+      });
+    }
+
+    next();
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(400).json({
+      error: 'Invalid session token',
+    });
   }
 };
