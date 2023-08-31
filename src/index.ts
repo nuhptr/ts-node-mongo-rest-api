@@ -5,6 +5,8 @@ import cookieParser from 'cookie-parser';
 import compression from 'compression';
 import cors from 'cors';
 
+import mongoose from 'mongoose';
+
 const app = express();
 
 app.use(bodyParser.json());
@@ -18,3 +20,8 @@ const server = http.createServer(app);
 server.listen(8080, () => {
   console.log('Server listening on port 8080');
 });
+
+const MONGO_URL = process.env.MONGO_URL as string;
+
+mongoose.Promise = Promise;
+mongoose.connect(MONGO_URL);
