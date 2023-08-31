@@ -43,10 +43,10 @@ export const isOwner = async (
 ) => {
   try {
     const { id } = req.params;
-    const currentUserId = get(req, 'identity');
-    const userId = 'currentUserId._id' as string;
+    const currentUserId = get(req, 'identity._id');
+    const userId = `${currentUserId}` as string;
 
-    if (!currentUserId) {
+    if (!userId) {
       return res.sendStatus(403).json({
         error: 'You are not authorized to access this resource',
       });
