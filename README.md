@@ -32,4 +32,7 @@ npm install body-parser / npm install -D @types/body-parser
 
 # http
 npm install http / npm install -D @types/http 
+
+# mongoose
+npm install mongoose / npm install -D @types/mongoose
 ```
