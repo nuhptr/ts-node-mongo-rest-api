@@ -8,6 +8,9 @@ This is a simple RestApi using Express and Typescript.
 # crypto (nodejs -> hash)
 included in nodejs
 
+# lodash
+npm install lodash / npm install -D @types/lodash
+
 # typescript
 npm install -D typescript / npm install -g typescript (global)
 tsc --init (create tsconfig.json)
