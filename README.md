@@ -5,6 +5,9 @@ This is a simple RestApi using Express and Typescript.
 ## Dependencies
 
 ```bash
+# crypto (nodejs -> hash)
+included in nodejs
+
 # typescript
 npm install -D typescript / npm install -g typescript (global)
 tsc --init (create tsconfig.json)
@@ -31,7 +34,7 @@ npm install cookie-parser / npm install -D @types/cookie-parser
 npm install body-parser / npm install -D @types/body-parser
 
 # http
-npm install http / npm install -D @types/http 
+npm install http / npm install -D @types/http
 
 # mongoose
 npm install mongoose / npm install -D @types/mongoose
