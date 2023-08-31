@@ -7,6 +7,8 @@ import cors from 'cors';
 
 import mongoose from 'mongoose';
 
+import router from './router';
+
 const app = express();
 
 app.use(bodyParser.json());
@@ -14,6 +16,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(compression());
 app.use(cors({ origin: true, credentials: true }));
+
+app.use('/', router());
 
 const server = http.createServer(app);
 
